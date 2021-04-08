@@ -19,14 +19,13 @@ function BoxList() {
 
 
 return (
-  <div>
-    <NewBoxForm add={add}/>
-    {boxes.map(({ id, width, height, backgroundColor }) => (
-    <Box id={id} key={id} width={width} height={height} backgroundColor={backgroundColor} remove={()=> remove(id)}/>))
-    }
-  </div>
-)
-
+    <div className="boxlist">
+      <NewBoxForm add={add}/>
+      {boxes.map(({ id, width, height, backgroundColor }) => (
+      <Box className="box" id={id} key={id} width={width} height={height} backgroundColor={backgroundColor} remove={()=> remove(id)}/>))
+      }
+    </div>
+  )
 }
 
 export default BoxList;

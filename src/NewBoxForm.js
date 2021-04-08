@@ -13,7 +13,12 @@ function NewBoxForm(props) {
 
   function getFormData(evt) {
     evt.preventDefault();
-    let data = {...formData, id:uuid(), height:formData.height + "px", width:formData.width + "px" }
+    let data
+    if (parseInt(formData.height) > 0 && parseInt(formData.width) > 0) {
+      data = {...formData, id:uuid(), height:formData.height + "px", width:formData.width + "px" }
+    } else {
+      data = {id:uuid()}
+    }
     props.add(data);
   }
 

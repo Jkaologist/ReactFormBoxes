@@ -13,7 +13,7 @@ import React from "react";
   Parent is BoxList
   Child of BoxList
 */
-function Box ({ id, height="10px", backgroundColor="black", width="10px", remove }) {
+function Box ({ id, height="50px", backgroundColor="black", width="50px", remove }) {
 
   return (
     <div>
