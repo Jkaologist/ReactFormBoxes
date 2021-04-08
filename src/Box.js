@@ -23,7 +23,7 @@ function Box ({ id, height="10px", backgroundColor="black", width="10px", remove
         backgroundColor: backgroundColor
       }}>
       </div>
-      <button className="removebutton" onclick={remove}>
+      <button className="removebutton" onClick={remove}>
         Remove Box!
       </button>
     </div>
