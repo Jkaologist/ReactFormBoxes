@@ -30,7 +30,7 @@ function NewBoxForm(props) {
       <input id="width" name="width" onChange={handleChange} value={formData.width}></input>
       <label htmlFor="backgroundColor">Background Color</label>
       <input id="backgroundColor" onChange={handleChange} name="backgroundColor" value={formData.backgroundColor}></input>
-      <button >Add Box</button>
+      <button className="addBox">Add Box</button>
     </form>
   )
 }

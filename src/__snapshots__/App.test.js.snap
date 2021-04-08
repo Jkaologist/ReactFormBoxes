@@ -39,7 +39,9 @@ exports[`matches the snapshot 1`] = `
           name="backgroundColor"
           value=""
         />
-        <button>
+        <button
+          class="addBox"
+        >
           Add Box
         </button>
       </form>

@@ -1,8 +1,6 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent} from "@testing-library/react";
 import BoxList from "./BoxList";
-
-// function add(height=2px, width=2px, container, color="black") {
 
 // smoke test
 it("renders", function () {
@@ -17,27 +15,45 @@ it("matches the snapshot", function () {
 describe("add", function () {
   it("adds a new box", function () {
     const {container} = render(<BoxList />);
-    // add( container );
-    let box = container.querySelector("box")
+    const addBoxBtn = container.querySelector(".addBox");
+    fireEvent.click(addBoxBtn);
+    let box = container.querySelector(".boxDiv");
     expect(box).toBeInTheDocument();
   })
 })
 
-// it("can add a new item", function () {
-//   const { getByLabelText, queryByText } = render(<ShoppingList />);
+it("can add a new item", function () {
+  const { getByLabelText, queryByText, container} = render(<BoxList/>);
 
-//   // no items yet
-//   expect(queryByText("ice cream: 100")).not.toBeInTheDocument();
+  // no items yet
+  expect(queryByText("height: 100")).not.toBeInTheDocument();
 
-//   const nameInput = getByLabelText("Name:");
-//   const qtyInput = getByLabelText("Qty:");
-//   const submitBtn = queryByText("Add a new item!");
+  const heightInput = getByLabelText("Height");
+  const widthInput = getByLabelText("Width");
+  const bgColorInput = getByLabelText("Background Color");
+  const addBoxBtn = container.querySelector(".addBox");
 
-//   // fill out the form
-//   fireEvent.change(nameInput, { target: { value: "ice cream" } });
-//   fireEvent.change(qtyInput, { target: { value: 100 } });
-//   fireEvent.click(submitBtn);
+  // fill out the form
+  fireEvent.change(heightInput, { target: { value: 100 } });
+  fireEvent.change(widthInput, { target: { value: 100 } });
+  fireEvent.change(bgColorInput, { target: { value: "green" } });
+  fireEvent.click(addBoxBtn);
 
-//   // item exists!
-//   expect(queryByText("ice cream: 100")).toBeInTheDocument();
-// });
+  // item exists!
+  let box = container.querySelector(".boxDiv");
+  expect(box).toBeInTheDocument();
+
+});
+
+it("can remove a box", function () {
+
+  const {container} = render(<BoxList/>);
+  const addBoxBtn = container.querySelector(".addBox");
+  fireEvent.click(addBoxBtn);
+  let box = container.querySelector(".boxDiv");
+  expect(box).toBeInTheDocument();
+  const removeBoxBtn = container.querySelector(".removeButton");
+  fireEvent.click(removeBoxBtn);
+  expect(box).not.toBeInTheDocument();
+
+});
